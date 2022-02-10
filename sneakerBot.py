@@ -9,16 +9,6 @@ import pandas as pd
 
 df = pd.read_excel(r'/Users/matteo/Desktop/SneakerSpreadsheet.xlsx')
 
-productIndex = input("Product index: ")
-website = input("Website name: ")
-
-for index, row in df.iterrows():
-    if index == productIndex:
-        prodName = shoe['Name']
-        size = shoe["BestSize']
-    
-productChecker(website, prodName, size)
-
 #function checks the availibility of product and returns url if present on site
 #Definitely returns correct url if given the right input
 def productChecker(website, nameOfProduct, size):
@@ -91,8 +81,19 @@ def functionManager(website, nameOfProduct, shoesize):
         link = productChecker(website, nameOfProduct)
         checkoutBot(link, shoesize)
 
+                    
+productIndex = input("Product index: ")
+website = input("Website name: ")
 
+for index, row in df.iterrows():
+    if index == productIndex:
+        prodName = shoe['Name']
+        size = shoe["BestSize']
+    
+productChecker(website, prodName, size)
 
+                    
+                    
 #issue right now is that there is an error with selecting the size of the shoe, for some reason it doesn't like
 #the call to select the value 12 even tho its the only one, code is outputting the right value tho
 #functionManager('shoepalace.com', 'Air Max 95 Raygun Mens Lifestyle Shoes (Black/Cosmic Clay/Kumquat/White)', '12'
