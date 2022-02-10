@@ -1,1 +1,2 @@
 # SneakerBot is a webscraping python project used for finding a specific product on a Shopify website. If the product is found Selenium will open up a web browser and take the necessary steps to bring you to the check out page in your selected size. Once at the checkout page, it is up to the user to use their chrome autofill to quickly fill in the information and check out the product before it is sold out.
+#The bot is specifically tailored to shoepalace.com but can be easily tweaked to fit other shopify sites
