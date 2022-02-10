@@ -81,32 +81,18 @@ def functionManager(website, nameOfProduct, shoesize):
         link = productChecker(website, nameOfProduct)
         checkoutBot(link, shoesize)
 
-                    
+#Getting the input of the product we're looking for and the website
 productIndex = input("Product index: ")
 website = input("Website name: ")
 
+#Getting the name and size of the specified product
 for index, row in df.iterrows():
     if index == productIndex:
         prodName = shoe['Name']
         size = shoe["BestSize']
-    
-productChecker(website, prodName, size)
+                    
+#Calling function manager to start the process with our new product information
+functionManager(website, prodName, size)
 
                     
                     
-#issue right now is that there is an error with selecting the size of the shoe, for some reason it doesn't like
-#the call to select the value 12 even tho its the only one, code is outputting the right value tho
-#functionManager('shoepalace.com', 'Air Max 95 Raygun Mens Lifestyle Shoes (Black/Cosmic Clay/Kumquat/White)', '12'
-
-
-# def shoeBot():
-#     websiteName = input("website name: ")
-#     prodName = input("name of product: ")
-#     prodCategory = input("category of product: ")
-#     prodColor = input("color: ")
-#     shoeSize = input("shoe size: ")
-#     fullName = prodName + ' ' + prodCategory + ' (' + prodColor + ')'
-#     functionManager(websiteName, fullName, shoeSize)
-
-
-
