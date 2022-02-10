@@ -4,12 +4,24 @@ import json
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 import time
+import pandas as pd
 
 
+df = pd.read_excel(r'/Users/matteo/Desktop/SneakerSpreadsheet.xlsx')
+
+productIndex = input("Product index: ")
+website = input("Website name: ")
+
+for index, row in df.iterrows():
+    if index == productIndex:
+        prodName = shoe['Name']
+        size = shoe["BestSize']
+    
+productChecker(website, prodName, size)
 
 #function checks the availibility of product and returns url if present on site
 #Definitely returns correct url if given the right input
-def productChecker(website, nameOfProduct):
+def productChecker(website, nameOfProduct, size):
 
     websitelink = 'https://www.' + website + '/products.json'
     productData = requests.get(websitelink)
@@ -22,8 +34,7 @@ def productChecker(website, nameOfProduct):
         if (item['title'] == nameOfProduct):
             itemLink = url + item['handle']
             print(itemLink)
-            return itemLink
-
+            checkoutBot(itemLink, size)
     return False
     
 
@@ -84,11 +95,7 @@ def functionManager(website, nameOfProduct, shoesize):
 
 #issue right now is that there is an error with selecting the size of the shoe, for some reason it doesn't like
 #the call to select the value 12 even tho its the only one, code is outputting the right value tho
-functionManager('shoepalace.com', 'Air Max 95 Raygun Mens Lifestyle Shoes (Black/Cosmic Clay/Kumquat/White)', '12'
-
-
-
-
+#functionManager('shoepalace.com', 'Air Max 95 Raygun Mens Lifestyle Shoes (Black/Cosmic Clay/Kumquat/White)', '12'
 
 
 # def shoeBot():
@@ -100,5 +107,5 @@ functionManager('shoepalace.com', 'Air Max 95 Raygun Mens Lifestyle Shoes (Black
 #     fullName = prodName + ' ' + prodCategory + ' (' + prodColor + ')'
 #     functionManager(websiteName, fullName, shoeSize)
 
-shoeBot()
+
 
